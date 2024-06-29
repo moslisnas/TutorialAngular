@@ -1,0 +1,34 @@
+<section>
+    <h3>User component</h3>
+    @if (isLoggedIn){
+        <p>Bienvenido, {{ username }}</p>
+        <div class="image-container">
+            <img
+                (click)="greet()"
+                alt="photo"
+                src="https://github.com/moslisnas.png"
+            />
+        </div>
+    } @else {
+        <p>¡Inicia sesión!</p>
+        <button (click)="isLoggedIn = true">Log In</button>
+    }
+
+    <app-games (addFavoriteEvent)="getFavorite($event)" username="{{ username }}">
+    </app-games>
+    @if(favGame !== ''){
+        <p>Tu juego favorito es {{ favGame }}</p>
+    }
+
+    <h3>Imágenes</h3>
+    <ul>
+      <li>
+        Static Image:
+        <img ngSrc="moslisnas.png" alt="Angular logo" width="32" height="32" />
+      </li>
+      <li>
+        Dynamic Image:
+        <img [ngSrc]="logoUrl" [alt]="logoAlt" width="32" height="32" />
+      </li>
+    </ul>
+</section>
