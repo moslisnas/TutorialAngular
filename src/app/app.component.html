@@ -1,39 +1,18 @@
 <div>
     <h1>Angular Tutorial</h1>
 
-    <h3>Routers</h3>
-    <nav>
-      <a href="/">Home</a>
-      |
-      <a href="/user">User</a>
-    </nav>
-
-    <h3>Router link</h3>
-    <a routerLink="/">Home router link</a>
-    |
-    <a routerLink="/user">User router link</a>
-
-    <router-outlet />
-
+    <h2>Components</h2>
     <app-user></app-user>
-    
-    <h3>Reactive Forms</h3>
-    <form [formGroup]="profileForm" (ngSubmit)="handleSubmit()">
-        <label>
-            Name
-            <input type="text" formControlName="name" />
-        </label>
-        <label>
-            Email
-            <input type="email" formControlName="email" />
-        </label>
-        <button type="submit" [disabled]="!profileForm.valid">Submit</button>
-    </form>
-    <h4>Profile Form</h4>
-    <p>Name: {{ profileForm.value.name }}</p>
-    <p>Email: {{ profileForm.value.email }}</p>
 
-    <h3>Images</h3>
+    @defer (on viewport) {
+        <app-comments></app-comments>
+    } @placeholder {
+        <p>Future comments</p>
+    } @loading {
+        <p>Loading comments...</p>
+    }
+    
+    <h2>Images</h2>
     <ul>
       <li>
         Static Image:
@@ -45,15 +24,56 @@
       </li>
     </ul>
 
-    <h3>Injection</h3>
+    <h2>Routers</h2>
+    <nav>
+      <a href="/">Home</a>
+      |
+      <a href="/user">User</a>
+    </nav>
+
+    <h2>Router link</h2>
+    <a routerLink="/">Home router link</a>
+    |
+    <a routerLink="/user">User router link</a>
+
+    <router-outlet />
+
+    <h2>Forms</h2>
+    <p>Framework: {{ favoriteFramework }}</p>
+    <label for="framework">
+      Favorite Framework:
+      <input id="framework" type="text" [(ngModel)]="favoriteFramework" />
+    </label>
+    <button (click)="showFramework()">Show Framework</button>
+
+    <h2>Reactive Forms</h2>
+    <form [formGroup]="profileForm" (ngSubmit)="handleSubmit()">
+        <label>
+            Name
+            <input type="text" formControlName="name" />
+        </label>
+        <label>
+            Email
+            <input type="email" formControlName="email" />
+        </label>
+        <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+    </form>
+    <h3>Profile Form</h3>
+    <p>Name: {{ profileForm.value.name }}</p>
+    <p>Email: {{ profileForm.value.email }}</p>
+
+    <h2>Injection</h2>
     <p> {{ carService.getCars() }} </p>
     <p>Car Listing: {{ display }}</p>
 
-    @defer (on viewport) {
-    <app-comments></app-comments>
-    } @placeholder {
-        <p>Future comments</p>
-    } @loading {
-        <p>Loading comments...</p>
-    }
+    <h2>Pipes</h2>
+    {{username | lowercase }}
+    <h3>Formatting data pipes</h3>
+    <ul>
+        <li>Number with "decimal" {{ num | number:"3.2-2" }}</li>
+        <li>Date with "date" {{ birthday | date: 'medium' }}</li>
+        <li>Currency with "currency" {{ cost | currency }}</li>
+    </ul>
+    <h3>Custom pipe</h3>
+    Reverse Machine: {{ word | reverse }}
 </div>

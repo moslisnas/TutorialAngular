@@ -1,5 +1,5 @@
 <section>
-    <h3>User component</h3>
+    <h3>User component (with control flow)</h3>
     @if (isLoggedIn){
         <p>Welcome, {{ username }}</p>
         <div class="image-container">
@@ -13,18 +13,11 @@
         <p>¡Log in!</p>
         <button (click)="isLoggedIn = true">Log In</button>
     }
-
+    
+    <h2>Events</h2>
     <app-games (addFavoriteEvent)="getFavorite($event)" username="{{ username }}">
     </app-games>
     @if(favGame !== ''){
         <p>Your favorite game is {{ favGame }}</p>
     }
-
-    <h3>Forms</h3>
-    <p>Framework: {{ favoriteFramework }}</p>
-    <label for="framework">
-      Favorite Framework:
-      <input id="framework" type="text" [(ngModel)]="favoriteFramework" />
-    </label>
-    <button (click)="showFramework()">Show Framework</button>
 </section>
