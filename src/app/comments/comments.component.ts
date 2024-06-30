@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [NgOptimizedImage],
   template: `
-    <h3>Comentarios</h3>
+    <h3>Comments</h3>
     <img src="https://img2.rtve.es/i/?w=1200&i=https://img.rtve.es/imagenes/this-is-fine-meme-forma-parte-webcomic-2013/1614352806474.png"/>
     <p>Lorem impsum</p>
   `,

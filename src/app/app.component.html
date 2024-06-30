@@ -1,5 +1,5 @@
 <div>
-    <h1>Tutorial Angular</h1>
+    <h1>Angular Tutorial</h1>
 
     <h3>Routers</h3>
     <nav>
@@ -16,12 +16,40 @@
     <router-outlet />
 
     <app-user></app-user>
+    
+    <h3>Reactive Forms</h3>
+    <form [formGroup]="profileForm" (ngSubmit)="handleSubmit()">
+        <label>
+            Name
+            <input type="text" formControlName="name" />
+        </label>
+        <label>
+            Email
+            <input type="email" formControlName="email" />
+        </label>
+        <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+    </form>
+    <h4>Profile Form</h4>
+    <p>Name: {{ profileForm.value.name }}</p>
+    <p>Email: {{ profileForm.value.email }}</p>
+
+    <h3>Images</h3>
+    <ul>
+      <li>
+        Static Image:
+        <img ngSrc="moslisnas.png" alt="Angular logo" width="32" height="32" />
+      </li>
+      <li>
+        Dynamic Image:
+        <img [ngSrc]="logoUrl" [alt]="logoAlt" width="32" height="32" />
+      </li>
+    </ul>
 
     @defer (on viewport) {
     <app-comments></app-comments>
     } @placeholder {
-        <p>Futuros comentarios</p>
+        <p>Future comments</p>
     } @loading {
-        <p>Cargando comentarios...</p>
+        <p>Loading comments...</p>
     }
 </div>

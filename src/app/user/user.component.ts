@@ -1,14 +1,11 @@
 import { Component } from '@angular/core';
 import { GamesComponent } from '../games/games.component';
-import { NgOptimizedImage, provideImgixLoader } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [GamesComponent, GamesComponent, NgOptimizedImage],
-  providers: [
-    provideImgixLoader('https://github.com/'),
-  ],
+  imports: [FormsModule, GamesComponent],
   templateUrl: './user.component.html',
   styleUrl: './user.component.css',
 })
@@ -16,8 +13,7 @@ export class UserComponent {
   username = "moslisnas";
   isLoggedIn = false; //<-- está funcionando como un estado
   favGame = '';
-  logoUrl = 'moslisnas.png';
-  logoAlt = 'Angular logo';
+  favoriteFramework = '';
 
   getFavorite(gameName: string){
     this.favGame = gameName;
@@ -25,5 +21,9 @@ export class UserComponent {
   
   greet(){
     alert("Hola!!!");
+  }
+  
+  showFramework() {
+    alert(this.favoriteFramework);
   }
 }

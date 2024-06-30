@@ -5,7 +5,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   standalone: true,
   imports: [],
   template: `
-    <h3>Los juegos favoritos de {{ username }}</h3>
+    <h3>{{ username }} favorite games</h3>
     <ul>
       @for(game of games; track game.id){
         <li (click)="fav(game.name)">{{ game.name }}</li>
